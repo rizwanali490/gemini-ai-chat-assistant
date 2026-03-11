@@ -1,0 +1,26 @@
+{
+    "name": "rizwanilyas/gemini-ai-chat-assistant",
+    "description": "WordPress plugin to integrate Gemini AI 2.5 via Google Cloud Generative Language API.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Rizwan Ilyas",
+            "email": "info@rizwandevs.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "google/cloud-ai-platform": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "GeminiAI\\ChatAssistant\\": "includes/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    }
+}

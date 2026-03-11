@@ -1,0 +1,286 @@
+:root {
+    --primary-bg-color: #fff;
+    --primary-border-color: #ddd;
+    --primary-text-color: #1f2937;
+    --secondary-bg-color: #ecf0f1;
+    --button-bg-color: #2563eb;
+    --button-hover-bg-color: #3059b4;
+    --active-button-bg-color: #1f2937;
+    --message-bg-user: #e0f7fa;
+    --message-bg-ai: #f4f4f4;
+    --message-text-color: ##4b5563;
+    --p-text-color: #4b5563;
+    --chat-input-bg-color: #ecf0f1;
+    --chat-input-border-color: #8b8b8b;
+    --button-input-bg-color: #1f2937;
+    --button-input-hover-bg-color: #121a21;
+    --loading-indicator-color: #777;
+}
+
+#gaca-chat-container {
+    width: 100%;
+    min-height: 700px;
+    height: calc(100vh - 150px);
+    max-height: 100vh;
+    background-color: var(--primary-bg-color);
+    border: 1px solid var(--primary-border-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    margin: 20px auto;
+    box-sizing: border-box;
+}
+
+.gaca-chat-header {
+    background-color: var(--primary-text-color);
+    color: var(--primary-bg-color);
+    padding: 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gaca-chat-header .close-button {
+    background: none;
+    border: none;
+    color: var(--primary-bg-color);
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.gaca-topics {
+    padding: 18px;
+    background-color: var(--primary-bg-color);
+    border-bottom: 1px solid var(--primary-border-color);
+}
+
+.gaca-topic-selection-heading {
+    color: var(--primary-text-color);
+    text-align: center;
+    text-transform: capitalize;
+    margin-bottom: 12px;
+    font-weight: 900;
+    line-height: 20px;
+}
+
+.gaca-topic-selection {
+    background-color: var(--primary-bg-color);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+}
+
+.gaca-topic-selection button {
+    background-color: var(--button-bg-color);
+    color: var(--primary-bg-color);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: 0.3s ease;
+}
+
+.gaca-topic-selection button:hover {
+    background-color: var(--button-hover-bg-color);
+    transform: translateY(-2px);
+}
+
+.gaca-topic-selection button.active {
+    background-color: var(--active-button-bg-color);
+    font-weight: bold;
+}
+
+.gaca-chat-messages {
+    flex-grow: 1;
+    padding: 15px 15px 0 15px;
+    overflow-y: auto;
+    background-color: var(--primary-bg-color);
+}
+
+.gaca-message {
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.gaca-message :is(ul:last-child,ol:last-child,ul li:last-child,ol li:last-child) {
+    margin-bottom: 0;
+}
+
+.gaca-message.user {
+    background-color: var(--message-bg-user);
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+.gaca-message.ai {
+    background-color: var(--message-bg-ai);
+    align-self: flex-start;
+    margin-right: auto;
+}
+
+.gaca-message strong {
+    font-size: 0.9em;
+    color: var(--message-text-color);
+}
+
+.gaca-chat-messages ul, .gaca-chat-messages ol {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-left: 20px;
+}
+
+.gaca-chat-messages ul {
+    list-style-type: disc;
+    list-style-position: outside;
+}
+
+.gaca-chat-messages ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+}
+
+.gaca-chat-messages ul li:last-child, .gaca-chat-messages ol li:last-child {
+    margin-bottom: 0;
+}
+
+.gaca-chat-messages p {
+    margin-top: 1em;
+    margin-bottom: 0;
+    line-height: 1.6;
+    color: var(--p-text-color);
+}
+
+.gaca-message-attachment img{
+    border-radius: 8px;
+}
+
+.gaca-file-preview-wrapper {
+    background-color: #f9f9f9;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+    padding: 10px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.gaca-file-preview {
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    max-width: 120px;
+}
+
+.gaca-file-preview-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.gaca-file-remove-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: var(--primary-bg-color);
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    cursor: pointer;
+    line-height: 1;
+    transition: background-color 0.2s;
+}
+
+.gaca-file-remove-button:hover {
+    background-color: rgba(255, 0, 0, 0.8);
+}
+
+.gaca-chat-input-area {
+    border-top: 1px solid var(--primary-border-color);
+    padding: 15px 10px;
+    display: flex;
+    gap: 10px;
+    background-color: var(--primary-bg-color);
+}
+
+.gaca-chat-input-area textarea {
+    flex-grow: 1;
+    border: 1px solid var(--chat-input-border-color);
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 0.95em;
+    min-height: 42px;
+    max-height: 150px;
+    overflow-y: auto;
+    resize: none;
+}
+
+.gaca-chat-input-area button {
+    background-color: transparent;
+    color: var(--primary-text-color);
+    border: none;
+    border-radius: 8px;
+    padding: 7px 15px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+    border: 1px solid var(--chat-input-border-color)
+}
+.gaca-chat-input-area button[disabled] {
+    opacity: 0.65;
+    cursor: default;
+}
+
+.gaca-chat-input-area button:hover {
+    color: var(--primary-bg-color);
+    background-color: var(--button-input-hover-bg-color);
+}
+
+.gaca-loading-indicator {
+    text-align: center;
+    padding: 15px;
+    font-style: italic;
+    color: var(--loading-indicator-color);
+    background-color: #f9f9f9;
+}
+
+body, h1, h2, h3, h4, h5, h6, label, figcaption, .wp-block-quote, .wp-block-pullquote, .ct-label, .site-title, .entry-meta, .ct-menu-badge, .entry-excerpt, .ct-post-title, .ct-breadcrumbs, .ct-header-text, .ct-product-sku, .ct-product-title, .ct-woo-card-stock, .author-box-bio, .author-box-name, .ct-contact-info, .site-description, .page-description, .mobile-menu a, .menu .ct-menu-link, .comment-reply-title, .ct-footer-copyright, .ct-language-switcher, :where(pre,code,samp,kbd), .onsale, .out-of-stock-badge, [class*=ct-woo-badge-], :is(.entry-summary,[data-products],.ct-trending-block,.ct-added-to-cart-product) .price, .ct-waitlist-message, .woocommerce-tabs .tabs, .woocommerce-tabs .ct-accordion-heading, .woocommerce-result-count, .ct-header-account-dropdown, .ct-module-title:is(p,span), .related-entry-title:is(p,span), .woocommerce-loop-product__title:is(p,span), .woocommerce-loop-category__title:is(p,span), .ct-shortcuts-bar, .ct-widget>*, .ct-dynamic-data-layer, .ct-dynamic-filter, .ct-search-results, .tutor-ratings, .tutor-meta>*, .tutor-course-details-title, .tutor-course-details-actions>a, .ct-language-switcher ul[data-placement] {
+    font-family: var(--theme-font-family) !important;
+    font-size: var(--theme-font-size)!important;
+    font-weight: var(--theme-font-weight)!important;
+    font-style: var(--theme-font-style, inherit)!important;
+    line-height: var(--theme-line-height)!important;
+    letter-spacing: var(--theme-letter-spacing)!important;
+    text-transform: var(--theme-text-transform)!important;
+    -webkit-text-decoration: var(--theme-text-decoration)!important;
+    text-decoration: var(--theme-text-decoration)!important;
+}
+
+@media (max-width: 768px) {
+    #gaca-chat-container {
+        min-height: 500px;
+        height: calc(100vh - 100px);
+        margin: 10px auto;
+        border-radius: 0;
+    }
+}

@@ -1,0 +1,34 @@
+/*
+ * Admin-specific Styles for the Gemini AI Chat Assistant plugin.
+ *
+ * @package Gemini_AI_Chat_Assistant
+ * @subpackage Gemini_AI_Chat_Assistant/assets/css
+ * @author Rizwan ilyas <rizwan@rizwandevs.com>
+ */
+
+#gaca-api-test-status {
+    font-weight: bold;
+    padding: 5px 0;
+    display: inline-block; /* To allow margin-left */
+    margin-top: 10px;
+}
+
+#gaca-api-test-status.success {
+    color: #4CAF50; /* Green */
+}
+
+#gaca-api-test-status.error {
+    color: #f44336; /* Red */
+}
+
+/* Basic styling for input fields */
+.gaca-api-key-field input[type="password"],
+.gaca-public-char-limit-field input[type="number"],
+.gaca-member-user-char-limit-field input[type="number"] {
+    min-width: 300px; /* Ensure inputs are wide enough */
+}
+
+/* Improve button spacing */
+#gaca-test-api-connection {
+    margin-top: 10px;
+}
